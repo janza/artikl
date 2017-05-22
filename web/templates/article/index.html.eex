@@ -1,0 +1,13 @@
+<div class="jumbotron">
+  <h2>Welcome to artikl</h2>
+  <p class="lead">Simple and readable bookmarks</p>
+</div>
+
+<div class="list-group full-width">
+  <%= for article <- @articles do %>
+    <%# <button class="list-group-item" type="button" href=""><%= article.title %1></button> %>
+    <%= link article.title, to: article_path(@conn, :show, article), class: "btn btn-default btn-xs" %>
+  <% end %>
+</div>
+
+<%= link "New article", to: article_path(@conn, :new) %>

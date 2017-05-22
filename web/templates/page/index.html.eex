@@ -1,0 +1,8 @@
+<div class="jumbotron">
+  <h2>Welcome to artikl</h2>
+  <p class="lead">Simple and readable bookmarks</p>
+</div>
+
+<div class="list-group">
+  <button class="list-group-item" type="button"></button>
+</div>
