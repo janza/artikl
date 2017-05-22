@@ -3,7 +3,7 @@ defmodule Artikl.Article do
 
   schema "articles" do
     field :url, :string
-    field :title, :string, default: 'title'
+    field :title, :string, default: "title"
     field :content, :string
     field :read, :boolean, default: false
 

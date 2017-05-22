@@ -3,6 +3,8 @@ defmodule Artikl.ArticleController do
 
   alias Artikl.Article
 
+  require Logger
+
   def index(conn, _params) do
     articles = Repo.all(Article)
     render(conn, "index.html", articles: articles)
@@ -17,13 +19,14 @@ defmodule Artikl.ArticleController do
     changeset = Article.changeset(%Article{}, article_params)
 
     if changeset.valid? do
-      render(conn, "new.html", changeset: changeset)
-    else
-      summary = Readability.summarize(article.url)
-      changeset = change(Ecto.changeset, %{
+      Logger.info "Summarizing url: #{changeset.changes.url}"
+      summary = Readability.summarize(changeset.changes.url)
+      changeset = Ecto.Changeset.change(changeset, %{
         content: summary.article_text,
         title: summary.title,
-      }
+      })
+
+      Logger.debug "Article summary: #{inspect(summary)}"
 
       case Repo.insert(changeset) do
         {:ok, _article} ->
@@ -33,6 +36,8 @@ defmodule Artikl.ArticleController do
         {:error, changeset} ->
           render(conn, "new.html", changeset: changeset)
       end
+    else
+      render(conn, "new.html", changeset: changeset)
     end
   end
 

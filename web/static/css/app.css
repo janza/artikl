@@ -1,1 +1,10 @@
 /* This file is for your main application css. */
+
+.container {
+  margin: 0 auto;
+}
+
+.content {
+  white-space: pre-wrap;
+  text-align: justify;
+}
