@@ -5,6 +5,7 @@ defmodule Artikl.Article do
     field :url, :string
     field :title, :string, default: "title"
     field :content, :string
+    field :html, :string
     field :read, :boolean, default: false
 
     timestamps()
@@ -15,7 +16,7 @@ defmodule Artikl.Article do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:url, :title, :read])
+    |> cast(params, [:url, :title, :read, :content, :html])
     |> validate_required([:url, :read])
   end
 end
