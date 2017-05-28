@@ -16,15 +16,13 @@ defmodule Artikl.Router do
   scope "/", Artikl do
     pipe_through :browser # Use the default browser stack
 
-    # get "/", PageController, :index
-    resources "/", ArticleController
+    resources "/", ArticleController, only: [:index, :show, :new]
   end
-
 
   # Other scopes may use custom stacks.
   scope "/api", Artikl do
     pipe_through :api
 
-    resources "/articles", ArticleController
+    resources "/articles", ArticleController, only: [:show, :create, :delete]
   end
 end

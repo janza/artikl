@@ -1,13 +1,15 @@
 <div class="jumbotron">
-  <h2>Welcome to artikl</h2>
-  <p class="lead">Simple and readable bookmarks</p>
+  <div class="lead">Artikl - Simple and readable bookmarks</div>
 </div>
 
-<div class="list-group full-width">
-  <%= for article <- @articles do %>
-    <%# <button class="list-group-item" type="button" href=""><%= article.title %1></button> %>
-    <%= link article.title, to: article_path(@conn, :show, article), class: "btn btn-default btn-xs" %>
-  <% end %>
-</div>
+<%= for article <- @articles do %>
+  <div class="pure-g article-list-item">
+    <div class="pure-u-5-6 flex">
+      <%= link article.title, to: article_path(@conn, :show, article), class: "article-list-item__title-link" %>
+    </div>
+    <div class="pure-u-1-6 flex">
+      <%= link "Del", to: article_path(@conn, :delete, article), class: "pure-button button-error button-xsmall article-list-item__delete js-delete-article" %>
+    </div>
+  </div>
+<% end %>
 
-<%= link "New article", to: article_path(@conn, :new) %>

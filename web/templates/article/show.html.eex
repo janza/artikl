@@ -1,7 +1,7 @@
-<h3>
+<h2>
   <%= @article.title %>
-</h3>
+</h2>
 
-<p class="content">
-<%= @article.content %>
-</p>
+<div class="content">
+<%= raw(@article.html) %>
+</div>
