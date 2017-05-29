@@ -1,3 +1,3 @@
-<h2>Bookmark an article</h2>
+<div class="lead">Bookmark an article</div>
 <%= render "form.html", changeset: @changeset,
                         action: article_path(@conn, :create) %>
