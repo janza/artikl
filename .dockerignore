@@ -7,3 +7,5 @@ test
 tmp
 erl_crash.dump
 *.ez
+node_modules
+priv/static/

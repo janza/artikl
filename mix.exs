@@ -39,7 +39,7 @@ defmodule Artikl.Mixfile do
      {:gettext, "~> 0.11"},
      {:readability, "~> 0.7"},
      {:cowboy, "~> 1.0"},
-     {:mix_docker, "~> 0.2.2"}]
+     {:mix_docker, "~> 0.4.1"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
