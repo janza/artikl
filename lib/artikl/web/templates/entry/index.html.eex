@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <div class="lead">Artikl - Simple and readable bookmarks</div>
+</div>
+
+<%= for entry <- @entires do %>
+  <div class="pure-g entry-list-item">
+    <div class="pure-u-3-4 flex">
+      <%= link entry.title, to: entry_path(@conn, :show, entry), class: "entry-list-item__title-link" %>
+    </div>
+    <div class="pure-u-1-4 flex">
+      <%= link "Edit", to: entry_path(@conn, :edit, entry), class: "pure-button button-xsmall entry-list-item__btn js-delete-entry" %>
+      <%= link "Del", to: entry_path(@conn, :delete, entry), method: :delete, data: [confirm: "Are you sure?"], class: "pure-button button-error button-xsmall entry-list-item__btn js-delete-entry" %>
+    </div>
+  </div>
+<% end %>

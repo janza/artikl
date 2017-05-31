@@ -16,13 +16,6 @@ defmodule Artikl.Web.Router do
   scope "/", Artikl.Web do
     pipe_through :browser # Use the default browser stack
 
-    resources "/", ArticleController, only: [:index, :show, :new]
-  end
-
-  # Other scopes may use custom stacks.
-  scope "/api", Artikl.Web do
-    pipe_through :api
-
-    resources "/articles", ArticleController, only: [:show, :create, :delete]
+    resources "/", EntryController
   end
 end

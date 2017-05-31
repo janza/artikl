@@ -14,6 +14,16 @@ defmodule Artikl.Web.ErrorHelpers do
     end
   end
 
+
+  @doc """
+  Generates list of error tags for form input errors.
+  """
+  def form_errors(form) do
+    for {field, error} <- form.errors do
+      content_tag :div, Atom.to_string(field) <> ": " <> translate_error(error), class: "help-block"
+    end
+  end
+
   @doc """
   Translates an error message using gettext.
   """
@@ -32,9 +42,9 @@ defmodule Artikl.Web.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(Artikl.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(Artikl.Web.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(Artikl.Gettext, "errors", msg, opts)
+      Gettext.dgettext(Artikl.Web.Gettext, "errors", msg, opts)
     end
   end
 end

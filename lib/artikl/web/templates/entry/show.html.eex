@@ -1,0 +1,11 @@
+<span><%= link "Edit", to: entry_path(@conn, :edit, @entry), class: ["entry-details-btn pure-button button-xsmall"] %></span>
+<span><%= link "Link", to: @entry.url, class: ["entry-details-btn pure-button button-xsmall"] %></span>
+<h2>
+  <%= @entry.title %>
+</h2>
+
+
+<div class="content">
+  <%= raw(@entry.html) %>
+</div>
+

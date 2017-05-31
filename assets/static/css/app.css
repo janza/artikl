@@ -16,12 +16,23 @@ body {
   max-width: 100%;
 }
 
-.content pre {
+.content pre,
+.content code
+{
+  font-size: 0.7em;
+  line-height: 1.6;
   max-width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding: 15px 10px;
   color: #1d2021;
   background: #fafafa;
+}
+
+.content p code,
+.content pre code {
+  padding: 0;
+  font-size: inherit;
+  background: none;
 }
 
 .content a {
@@ -29,7 +40,6 @@ body {
   text-shadow: -2px -2px #fefefe, -2px 2px #fefefe, 2px -2px #fefefe, 2px 2px #fefefe;
   background-size: 1px 1em;
   box-shadow: inset 0 -0.175em white, inset 0 -0.2em #107896;
-  display: inline;
 }
 
 h1, h2, h3, h4, h5 {
@@ -39,6 +49,10 @@ h1, h2, h3, h4, h5 {
 
 .header, form {
   font-family: sans-serif;
+}
+
+form.link {
+  margin: 0;
 }
 
 .lead {
@@ -89,12 +103,12 @@ a {
   text-decoration: none;
 }
 
-.article-list-item__delete {
+.entry-list-item__btn {
   flex-grow: 1;
-  margin: 10px;
+  margin: 5px;
 }
 
-.article-list-item__title-link {
+.entry-list-item__title-link {
   font-size: 1em;
   color: #222;
   display: block;
@@ -103,14 +117,20 @@ a {
   transition: 0.2s;
 }
 
-.article-list-item {
+.entry-list-item {
   transition: 0.2s;
 }
-.article-list-item:hover {
+.entry-list-item:hover {
   background: #f5f5f5;
 }
 
-.article-list-item__title-link:hover {
+.entry-list-item__title-link:hover {
   color: #000;
   background: #f5f5f5;
+}
+
+.entry-details-btn {
+  float: right;
+  margin-left: 5px;
+  font-family: sans-serif;
 }
