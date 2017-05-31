@@ -1,0 +1,12 @@
+web:
+  build: .
+  command: mix phoenix.server
+  ports:
+    - 4000:4000
+  volumes:
+    - .:/cwd
+  links:
+    - db
+
+db:
+  image: postgres

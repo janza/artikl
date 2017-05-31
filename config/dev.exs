@@ -39,5 +39,5 @@ config :artikl, Artikl.Repo,
   username: "postgres",
   password: "postgres",
   database: "artikl_dev",
-  hostname: "localhost",
+  hostname: "db",
   pool_size: 10

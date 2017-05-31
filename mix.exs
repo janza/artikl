@@ -38,7 +38,8 @@ defmodule Artikl.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:readability, "~> 0.7"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:mix_docker, "~> 0.2.2"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
