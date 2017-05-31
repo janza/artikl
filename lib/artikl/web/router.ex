@@ -1,4 +1,4 @@
-defmodule Artikl.Router do
+defmodule Artikl.Web.Router do
   use Artikl.Web, :router
 
   pipeline :browser do
@@ -13,14 +13,14 @@ defmodule Artikl.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Artikl do
+  scope "/", Artikl.Web do
     pipe_through :browser # Use the default browser stack
 
     resources "/", ArticleController, only: [:index, :show, :new]
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", Artikl do
+  scope "/api", Artikl.Web do
     pipe_through :api
 
     resources "/articles", ArticleController, only: [:show, :create, :delete]

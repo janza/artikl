@@ -1,4 +1,4 @@
-defmodule Artikl.ArticleController do
+defmodule Artikl.Web.ArticleController do
   use Artikl.Web, :controller
 
   alias Artikl.Article

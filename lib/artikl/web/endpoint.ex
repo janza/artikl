@@ -1,7 +1,7 @@
-defmodule Artikl.Endpoint do
+defmodule Artikl.Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :artikl
 
-  socket "/socket", Artikl.UserSocket
+  socket "/socket", Artikl.Web.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,5 +38,5 @@ defmodule Artikl.Endpoint do
     key: "_artikl_key",
     signing_salt: "33MeU/DT"
 
-  plug Artikl.Router
+  plug Artikl.Web.Router
 end

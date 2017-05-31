@@ -28,20 +28,20 @@ defmodule Artikl.Web do
 
   def controller do
     quote do
-      use Phoenix.Controller
+      use Phoenix.Controller, namespace: Artikl.Web
 
       alias Artikl.Repo
       import Ecto
       import Ecto.Query
 
-      import Artikl.Router.Helpers
-      import Artikl.Gettext
+      import Artikl.Web.Router.Helpers
+      import Artikl.Web.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "web/templates"
+      use Phoenix.View, root: "lib/artikl/web/templates", namespace: Artikl.Web
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
@@ -49,9 +49,9 @@ defmodule Artikl.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Artikl.Router.Helpers
-      import Artikl.ErrorHelpers
-      import Artikl.Gettext
+      import Artikl.Web.Router.Helpers
+      import Artikl.Web.ErrorHelpers
+      import Artikl.Web.Gettext
     end
   end
 
@@ -68,7 +68,7 @@ defmodule Artikl.Web do
       alias Artikl.Repo
       import Ecto
       import Ecto.Query
-      import Artikl.Gettext
+      import Artikl.Web.Gettext
     end
   end
 

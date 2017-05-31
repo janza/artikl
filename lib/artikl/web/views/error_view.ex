@@ -1,4 +1,4 @@
-defmodule Artikl.ErrorView do
+defmodule Artikl.Web.ErrorView do
   use Artikl.Web, :view
 
   def render("404.html", _assigns) do

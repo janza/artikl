@@ -11,7 +11,7 @@ defmodule Artikl do
       # Start the Ecto repository
       supervisor(Artikl.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Artikl.Endpoint, []),
+      supervisor(Artikl.Web.Endpoint, []),
       # Start your own worker by calling: Artikl.Worker.start_link(arg1, arg2, arg3)
       # worker(Artikl.Worker, [arg1, arg2, arg3]),
     ]
@@ -24,8 +24,8 @@ defmodule Artikl do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
-  def config_change(changed, _new, removed) do
-    Artikl.Endpoint.config_change(changed, removed)
-    :ok
-  end
+  # def config_change(changed, _new, removed) do
+  #   Artikl.Endpoint.config_change(changed, removed)
+  #   :ok
+  # end
 end

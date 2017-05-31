@@ -1,4 +1,4 @@
-defmodule Artikl.UserSocket do
+defmodule Artikl.Web.UserSocket do
   use Phoenix.Socket
 
   ## Channels

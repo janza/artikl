@@ -1,4 +1,4 @@
-defmodule Artikl.Gettext do
+defmodule Artikl.Web.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 

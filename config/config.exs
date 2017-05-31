@@ -10,10 +10,10 @@ config :artikl,
   ecto_repos: [Artikl.Repo]
 
 # Configures the endpoint
-config :artikl, Artikl.Endpoint,
+config :artikl, Artikl.Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "RqUBC2NLKElsF/8qhKZHKndk/3IM/ysMv6wGLHnU1NquTbdsdW4NrI2VLjfrLqGm",
-  render_errors: [view: Artikl.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: Artikl.Web.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Artikl.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
