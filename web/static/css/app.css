@@ -24,9 +24,7 @@ body {
   background: #fafafa;
 }
 
-.content a,
-.content span {
-  margin: 0 1px;
+.content a {
   color: inherit;
   text-shadow: -2px -2px #fefefe, -2px 2px #fefefe, 2px -2px #fefefe, 2px 2px #fefefe;
   background-size: 1px 1em;
