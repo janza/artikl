@@ -13,7 +13,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :artikl, Artikl.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
+  url: [host: "${DOMAIN}", port: 80],
   cache_static_manifest: "priv/static/manifest.json"
 
 # Do not print debug messages in production
@@ -48,7 +48,7 @@ config :logger, level: :info
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
 #
-#     config :phoenix, :serve_endpoints, true
+config :phoenix, :serve_endpoints, true
 #
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
@@ -58,4 +58,13 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+config :artikl, Artikl.Endpoint,
+  secret_key_base: "Wr85jxM5DXfgBkiPXbL63Q9qOO69gr0d7qd1N23P1h2hMVJWSMCpFm/fP6FSliSy"
+
+config :artikl, Artikl.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "${DB_USER}",
+  password: "${DB_PASSWORD}",
+  database: "${DB_NAME}",
+  hostname: "${DB_HOST}",
+  pool_size: 20
