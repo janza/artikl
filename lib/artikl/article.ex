@@ -16,11 +16,25 @@ defmodule Artikl.Article do
   end
 
   @doc """
-  Gets a single entry.
+  Gets a single entry for a specified slug.
 
   Raises `Ecto.NoResultsError` if the Entry does not exist.
   """
-  def get_entry!(id), do: Repo.get!(Entry, id)
+  def get_entry!(slugWithId) do
+    Repo.get!(Entry, id_from_slug(slugWithId))
+  end
+
+  @doc """
+  Extract id from slug.
+
+  Raises `Ecto.NoResultsError` if the Entry does not exist.
+  """
+  def id_from_slug(slug_with_id) do
+    slug_with_id
+    |> String.split("_")
+    |> List.last
+  end
+
 
   @doc """
   Creates a entry.

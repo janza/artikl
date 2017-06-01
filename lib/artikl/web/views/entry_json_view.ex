@@ -10,7 +10,7 @@ defmodule Artikl.Web.EntryJSONView do
     %{data: render_one(entry, EntryJSONView, "entry.json")}
   end
 
-  def render("entry.json", %{entry: entry}) do
+  def render("entry.json", %{entry_json: entry}) do
     %{id: entry.id,
       title: entry.title,
       url: entry.url,

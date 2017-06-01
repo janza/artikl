@@ -24,25 +24,19 @@ defmodule Artikl.Web.EntryController do
     end
   end
 
-  def id_from_slug(slug_with_id) do
-    slug_with_id
-    |> String.split("_")
-    |> List.last
-  end
-
   def show(conn, %{"id" => id}) do
-    entry = Article.get_entry!(id_from_slug(id))
+    entry = Article.get_entry!(id)
     render(conn, "show.html", entry: entry)
   end
 
   def edit(conn, %{"id" => id}) do
-    entry = Article.get_entry!(id_from_slug(id))
+    entry = Article.get_entry!(id)
     changeset = Article.change_entry(entry)
     render(conn, "edit.html", entry: entry, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "entry" => entry_params}) do
-    entry = Article.get_entry!(id_from_slug(id))
+    entry = Article.get_entry!(id)
 
     case Article.update_entry(entry, entry_params) do
       {:ok, entry} ->
@@ -55,7 +49,7 @@ defmodule Artikl.Web.EntryController do
   end
 
   def delete(conn, %{"id" => id}) do
-    entry = Article.get_entry!(id_from_slug(id))
+    entry = Article.get_entry!(id)
     {:ok, _entry} = Article.delete_entry(entry)
 
     conn

@@ -13,8 +13,14 @@ defmodule Artikl.Web.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api", Artikl.Web do
+    pipe_through :api
+
+    resources "/", EntryJSONController
+  end
+
   scope "/", Artikl.Web do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     resources "/", EntryController
   end
