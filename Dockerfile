@@ -1,6 +1,6 @@
 FROM bitwalker/alpine-erlang:19.2.1b
 
-ENV HOME=/opt/app/ TERM=xterm
+ENV HOME=/opt/app/
 
 # Install Elixir and basic build dependencies
 RUN \
@@ -26,16 +26,17 @@ COPY config/* config/
 COPY mix.exs mix.lock ./
 RUN mix do deps.get, deps.compile
 
-# install static deps
-COPY package.json ./
-RUN npm install
-
 COPY . .
 
+# install static deps
+RUN cd assets && npm install && cd -
+
 # build static
-RUN ./node_modules/brunch/bin/brunch b -p && \
-mix phoenix.digest && \
-rm -rf node_modules
+RUN cd assets && \
+./node_modules/brunch/bin/brunch b -p && \
+rm -rf node_modules && \
+cd - && \
+mix phoenix.digest
 
 RUN mix release --env=prod --verbose
 
@@ -49,10 +50,8 @@ RUN apk update && \
 EXPOSE 4000
 ENV PORT=4000 MIX_ENV=prod REPLACE_OS_VARS=true SHELL=/bin/sh
 
-ADD artikl.tar.gz ./
-
-COPY --from=0 /opt/app/artikl.tar.gz .
-RUN chown -R default ./releases
+COPY --from=0 /opt/app/_build/prod/rel/artikl/releases/0.0.3/artikl.tar.gz .
+RUN tar xvf artikl.tar.gz && rm artikl.tar.gz && chown -R default ./releases
 
 USER default
 

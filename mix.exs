@@ -3,7 +3,7 @@ defmodule Artikl.Mixfile do
 
   def project do
     [app: :artikl,
-     version: "0.0.2",
+     version: "0.0.3",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -38,7 +38,8 @@ defmodule Artikl.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:readability, "~> 0.7"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:distillery, "~> 1.4"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
