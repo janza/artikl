@@ -2,7 +2,14 @@
 
 ### Usage
 
-    docker run -d -p 4000:4000 jjanzic/artikl:0.0.3
+    docker run -d \
+      --name artikl \
+      -p 4000:4000 \
+      -e DB_NAME=artikl_prod \
+      -e DB_USER=postgres \
+      -e DB_PASSWORD=postgres \
+      -e DB_HOST=database_host \
+      jjanzic/artikl
 
 ### Development
 
