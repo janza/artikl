@@ -6,6 +6,8 @@ body {
 
 .container {
   margin: 0 auto;
+  padding: 0 15px;
+  overflow: hidden;
 }
 
 .content svg {
@@ -114,11 +116,11 @@ a {
   display: block;
   width: 100%;
   padding: 10px 10px;
-  transition: 0.2s;
+  transition: color 0.2s, background 0.2s;
 }
 
 .entry-list-item {
-  transition: 0.2s;
+  transition: background 0.2s;
 }
 .entry-list-item:hover {
   background: #f5f5f5;

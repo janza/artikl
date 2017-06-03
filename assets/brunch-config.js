@@ -20,10 +20,10 @@ exports.config = {
       // }
     },
     stylesheets: {
-      joinTo: 'css/app.css'
-      // order: {
-      //   after: ['css/app.css'] // concat app.css last
-      // }
+      joinTo: 'css/app.css',
+      order: {
+        after: ['static/css/app.css'] // concat app.css last
+      }
     },
     templates: {
       joinTo: 'js/app.js'
