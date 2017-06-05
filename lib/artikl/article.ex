@@ -40,7 +40,7 @@ defmodule Artikl.Article do
   Creates a entry.
   """
   def create_entry(attrs \\ %{}) do
-    entry = %Entry{}
+    %Entry{}
     |> Entry.changeset(attrs)
     |> sync_with_url
     |> add_slug
@@ -52,11 +52,15 @@ defmodule Artikl.Article do
   """
   def sync_with_url(changeset) do
     if changeset.valid? do
-      summary = Readability.summarize(changeset.changes.url)
+      %{status_code: _, body: raw_html} = HTTPoison.get!(
+        changeset.changes.url,
+        [{"user-agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.7 Safari/537.36"}],
+        [follow_redirect: true, force_redirect: true, hackney: [force_redirect: true]])
+      article = Readability.article(raw_html)
       Ecto.Changeset.change(changeset, %{
-        content: summary.article_text,
-        html: summary.article_html,
-        title: summary.title,
+        content: Readability.readable_text(article),
+        html: Readability.readable_html(article),
+        title: Readability.title(article)
       })
     else
       changeset
