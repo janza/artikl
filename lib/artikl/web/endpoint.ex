@@ -9,7 +9,7 @@ defmodule Artikl.Web.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :artikl, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js favicon-32x32.png apple-touch-icon.png safari-pinned-tab.svg favicon-16x16.png favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
