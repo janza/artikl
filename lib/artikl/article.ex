@@ -60,7 +60,7 @@ defmodule Artikl.Article do
       Ecto.Changeset.change(changeset, %{
         content: Readability.readable_text(article),
         html: Readability.readable_html(article),
-        title: Readability.title(article)
+        title: Readability.title(raw_html)
       })
     else
       changeset
