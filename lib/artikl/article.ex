@@ -12,7 +12,7 @@ defmodule Artikl.Article do
   Returns the list of entires.
   """
   def list_entires do
-    Repo.all(Entry)
+    Repo.all(Entry |> order_by(desc: :id))
   end
 
   @doc """
